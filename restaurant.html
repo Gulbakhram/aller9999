@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Меню ресторана | aller</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="header">
+    <a href="index.html" class="logo">
+      <img src="img/logo.png" alt="aller logo" style="height: 40px;">
+    </a>
+    <nav id="nav">
+      <a href="index.html#features">Преимущества</a>
+      <a href="index.html#restaurants">Рестораны</a>
+      <a href="index.html#categories">Категории</a>
+      <a href="index.html#couriers">Стать курьером</a>
+      <a href="#" class="nav-cta" id="loginBtn">Войти</a>
+      <div class="cart-btn" id="cartBtn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- Auth Modal -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-content">
+      <button class="close-auth" id="closeAuth"><i class="fas fa-times"></i></button>
+      <div class="auth-tabs">
+        <div class="auth-tab active" data-tab="login">Вход</div>
+        <div class="auth-tab" data-tab="register">Регистрация</div>
+      </div>
+      
+      <form class="auth-form active" id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Пароль</label>
+          <input type="password" id="loginPassword" required>
+        </div>
+        <button type="submit" class="auth-submit">Войти</button>
+        <div class="auth-switch">
+          Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрироваться</a>
+        </div>
+      </form>
+      
+      <form class="auth-form" id="registerForm">
+        <div class="form-group">
+          <label for="registerName">Имя</label>
+          <input type="text" id="registerName" required>
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Пароль</label>
+          <input type="password" id="registerPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="registerConfirm">Подтвердите пароль</label>
+          <input type="password" id="registerConfirm" required>
+        </div>
+        <button type="submit" class="auth-submit">Зарегистрироваться</button>
+        <div class="auth-switch">
+          Уже есть аккаунт? <a href="#" id="switchToLogin">Войти</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Ваша корзина</h3>
+      <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="empty-cart">
+        <i class="fas fa-shopping-basket"></i>
+        <p>Ваша корзина пуста</p>
+      </div>
+    </div>
+    <div class="cart-total" id="cartTotal" style="display: none;">
+      <span>Итого:</span>
+      <span id="totalAmount">0₸</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" style="display: none;">Оформить заказ</button>
+  </div>
+
+  <section class="restaurant-header">
+    <div class="restaurant-header-content">
+      <div class="restaurant-header-img">
+        <img id="restaurantImage" src="/placeholder.svg" alt="Ресторан">
+      </div>
+      <div class="restaurant-header-info">
+        <h1 id="restaurantName">Загрузка...</h1>
+        <div class="restaurant-meta">
+          <div class="restaurant-rating">
+            <i class="fas fa-star"></i>
+            <span id="restaurantRating">0.0</span>
+            <span id="restaurantReviews">(0 отзывов)</span>
+          </div>
+          <div class="restaurant-delivery-time">
+            <i class="fas fa-clock"></i>
+            <span id="restaurantDeliveryTime">0 мин</span>
+          </div>
+          <div class="restaurant-cuisine">
+            <i class="fas fa-utensils"></i>
+            <span id="restaurantCuisine">Загрузка...</span>
+          </div>
+        </div>
+        <p class="restaurant-description" id="restaurantDescription">
+          Загрузка описания ресторана...
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="menu-categories">
+    <button class="menu-category-btn active" data-category="all">Все</button>
+    <button class="menu-category-btn" data-category="main">Основные блюда</button>
+    <button class="menu-category-btn" data-category="starters">Закуски</button>
+    <button class="menu-category-btn" data-category="salads">Салаты</button>
+    <button class="menu-category-btn" data-category="drinks">Напитки</button>
+    <button class="menu-category-btn" data-category="desserts">Десерты</button>
+  </div>
+
+  <!-- Контейнер для меню, который будет заполняться динамически -->
+  <div id="menuContainer">
+    <!-- Здесь будет динамически загружаться меню ресторана -->
+    <div class="loading-menu" style="text-align: center; padding: 50px;">
+      <i class="fas fa-spinner fa-spin" style="font-size: 30px; color: var(--accent);"></i>
+      <p>Загрузка меню...</p>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>aller</h4>
+        <p>Премиальная служба доставки еды. Мы доставляем не просто еду, а удовольствие и экономию вашего времени.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Города</h4>
+        <ul class="footer-links">
+          <li><a href="#">Астана</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Полезные ссылки</h4>
+        <ul class="footer-links">
+          <li><a href="#">Политика конфиденциальности</a></li>
+          <li><a href="#">Условия использования</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Подпишитесь на рассылку</h4>
+        <p>Получайте первыми информацию о наших акциях и предложениях!</p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Ваш email">
+          <button type="submit">Подписаться</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 aller. Все права защищены.</p>
+    </div>
+  </footer>
+  
+  <!-- Подключаем данные меню перед основным скриптом -->
+  <script src="menu-data.js"></script>
+  <script src="script.js"></script>
+  <script src="restaurant.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aller — Доставка еды из лучших ресторанов Казахстана</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="header">
+    <a href="#" class="logo">
+      <img src="img/logo.png" alt="aller logo" style="height: 40px;">
+    </a>
+
+    <nav id="nav">
+      <a href="#features">Преимущества</a>
+      <a href="#restaurants">Популярное</a>
+      <a href="#categories">Рестораны</a>
+      <a href="#couriers">Стать курьером</a>
+      <a href="#" class="nav-cta" id="loginBtn">Войти</a>
+      <div class="cart-btn" id="cartBtn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+  
+  <!-- Auth Modal -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-content">
+      <button class="close-auth" id="closeAuth"><i class="fas fa-times"></i></button>
+      <div class="auth-tabs">
+        <div class="auth-tab active" data-tab="login">Вход</div>
+        <div class="auth-tab" data-tab="register">Регистрация</div>
+      </div>
+      
+      <form class="auth-form active" id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Пароль</label>
+          <input type="password" id="loginPassword" required>
+        </div>
+        <button type="submit" class="auth-submit">Войти</button>
+        <div class="auth-switch">
+          Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрироваться</a>
+        </div>
+      </form>
+      
+      <form class="auth-form" id="registerForm">
+        <div class="form-group">
+          <label for="registerName">Имя</label>
+          <input type="text" id="registerName" required>
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Пароль</label>
+          <input type="password" id="registerPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="registerConfirm">Подтвердите пароль</label>
+          <input type="password" id="registerConfirm" required>
+        </div>
+        <button type="submit" class="auth-submit">Зарегистрироваться</button>
+        <div class="auth-switch">
+          Уже есть аккаунт? <a href="#" id="switchToLogin">Войти</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Ваша корзина</h3>
+      <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="empty-cart">
+        <i class="fas fa-shopping-basket"></i>
+        <p>Ваша корзина пуста</p>
+      </div>
+    </div>
+    <div class="cart-total" id="cartTotal" style="display: none;">
+      <span>Итого:</span>
+      <span id="totalAmount">0₸</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" style="display: none;">Оформить заказ</button>
+  </div>
+  
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Доставка еды из лучших ресторанов Казахстана</h1>
+      <p>aller — премиальная служба доставки, которая объединяет кухни лучших ресторанов страны. Быстро, вкусно и удобно!</p>
+      <div class="hero-btns">
+        <a href="#restaurants" class="btn btn-primary">Выбрать ресторан <i class="fas fa-chevron-right"></i></a>
+        <a href="#categories" class="btn btn-secondary">Смотреть все</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section" id="features">
+    <div class="section-title">
+      <h2>Почему выбирают нас</h2>
+      <p>Мы делаем все, чтобы ваш опыт заказа еды был максимально удобным и приятным</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3>Быстрая доставка</h3>
+        <p>Среднее время доставки 25-30 минут благодаря оптимизированным маршрутам</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-medal"></i>
+        </div>
+        <h3>Гарантия качества</h3>
+        <p>Работаем только с проверенными ресторанами и тщательно отбираем партнеров</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-wallet"></i>
+        </div>
+        <h3>Оплата онлайн</h3>
+        <p>Удобная и безопасная оплата картой, Apple Pay или Google Pay</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3>Поддержка 24/7</h3>
+        <p>Наша служба поддержки всегда готова помочь с любым вопросом</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section" id="restaurants">
+    <div class="section-title">
+      <h2>Популярные рестораны</h2>
+      <p>Самые востребованные заведения нашего сервиса</p>
+    </div>
+    <div class="restaurants-scroll-container">
+      <div class="restaurants-scroll" id="popularRestaurants">
+        <!-- Рестораны будут добавлены через JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="section-title">
+      <h2>Рестораны по категориям</h2>
+      <p>Выберите кухню, которая вам по душе</p>
+    </div>
+ 
+    <div class="category-tabs">
+      <button class="category-tab active" data-category="all">Все</button>
+      <button class="category-tab" data-category="asian">Азиатская</button>
+      <button class="category-tab" data-category="eastern">Восточная</button>
+      <button class="category-tab" data-category="street">Street-food</button>
+      <button class="category-tab" data-category="european">Европейская</button>
+      <button class="category-tab" data-category="kazakh">Казахская</button>
+      <button class="category-tab" data-category="pizza">Пицца</button>
+      <button class="category-tab" data-category="sushi">Суши</button>
+      <button class="category-tab" data-category="desserts">Десерты</button>
+    </div>
+    
+    <div class="restaurants-container">
+      <div class="restaurants-grid" id="restaurantsGrid">
+        <!-- Рестораны будут добавлены через JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section courier-banner" id="couriers">
+    <div class="courier-content">
+      <div class="courier-text">
+        <h2>Станьте курьером aller</h2>
+        <p>Зарабатывайте от 150 000₸ в месяц с гибким графиком работы</p>
+        <a href="https://t.me/+IZOzL5WeKucwNjgy" class="btn btn-primary" target="_blank">Подробнее <i class="fas fa-chevron-right"></i></a>
+      </div>
+      <div class="courier-img">
+        <img src="img/aller.png" alt="Курьер">
+      </div>
+    </div>
+  </section>
+  
+  <footer id="contact">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>aller</h4>
+        <p>Премиальная служба доставки еды. Мы доставляем не просто еду, а удовольствие и экономию вашего времени.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/theaaruss" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com/theaaruss" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/theaaruss" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+  <h4>Навигация</h4>
+  <ul class="footer-links">
+    <li><a href="#features">Преимущества</a></li>
+    <li><a href="#restaurants">Популярное</a></li>
+    <li><a href="#categories">Рестораны</a></li>
+    <li><a href="#couriers">Стать курьером</a></li>
+  </ul>
+</div>
+      
+      <div class="footer-col">
+        <h4>Компания</h4>
+        <ul class="footer-links">
+          <li><a href="https://t.me/+IZOzL5WeKucwNjgy">Стать курьером</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <p><i class="fas fa-map-marker-alt"></i> г. Кокшетау, ул. Абылай хана 1/3,офис 142</p>
+        <p><i class="fas fa-phone"></i> +7 (776) 213-68-00</p>
+        <p><i class="fas fa-envelope"></i> support@aller.kz</p>
+        <p><i class="fas fa-clock"></i> Круглосуточно, без выходных</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 aller — служба доставки еды. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
